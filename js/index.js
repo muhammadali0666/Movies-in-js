@@ -5,7 +5,7 @@ const elForm = document.querySelector(".form");
 
 elResult.textContent = films.length;
 
-elSelect.innerHTML = null;
+
 
 const renderGenres = function (arr) {
   const uniqueGenres = [];
@@ -39,8 +39,9 @@ elForm.addEventListener("submit", function (evt) {
   const selectGanres = [];
 
   films.forEach((film) => {
-    if (film.genres.includes(selectValue)) {
+    if (selectValue === "all" || film.genres.includes(selectValue)) {
       selectGanres.push(film);
+      elResult.textContent = `${selectGanres.length}`
     }
   });
   renderMovies(selectGanres, elMovieList);
